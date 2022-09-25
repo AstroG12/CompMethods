@@ -5,7 +5,7 @@ plt.style.use('seaborn-white')
 
 
 def Electric_pot(q, x_1, y_1, x_2, y_2):
-    """Calculates the electric potential at points x_2 and y_2"""
+    """Calculates the electric potential at point (x_2, y_2)"""
     ep_0 = 8.854 * 10 ** -12  # C^2/(N * m^2)
     r = np.sqrt(((x_2 - x_1) ** 2) + ((y_2 - y_1) ** 2))
     pot_denom = 4 * np.pi * ep_0 * r
