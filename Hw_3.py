@@ -33,7 +33,6 @@ potential = Electric_pot(1, -1.2, 0, X, Y) + Electric_pot(1, 1.2, 0, X, Y)
 
 field = np.gradient(potential)
 
-speed = np.sqrt(field[0]**2 + field[1]**2)
 
 # Create figure
 
@@ -63,7 +62,8 @@ axes[0, 1].set_ylabel("Y")
 
 # Plots E-field
 
-axes[1, 0].streamplot(X, Y, field[0], field[1], color="k", density=[0.5, 1])
+axes[1, 0].streamplot(X, Y, field[0] * -1, field[1] * -1, color="k", density=[
+    0.5, 1])
 axes[1, 0].scatter(1, 0, color="r")
 axes[1, 0].scatter(-1, 0, color="b")
 axes[1, 0].title.set_text("Electric Field")
