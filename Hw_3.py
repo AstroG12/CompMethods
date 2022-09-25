@@ -53,15 +53,18 @@ axes[0,0].set_ylabel("Y")
 
 # Plots image of potential 
 
-cmap=axes[0,1].imshow(potential,vmin=500,vmax=5e10,extent=[0,2,0,2],origin="lower",cmap="copper_r")
-axes[0,1].title.set_text("Map of Potentials")
+cmap=axes[0,1].imshow(potential/1e10,vmin=0,vmax=5,extent=[0,2,0,2],origin="lower",cmap="copper_r")
+axes[0,1].title.set_text("Map of Potentials(Volts * 10^10)")
 axes[0,1].set_xlabel("X")
 axes[0,1].set_ylabel("Y")
 
 # Plots E-field
 
-lw = 5*speed / speed.max()
-axes[1,0].streamplot(X,Y,field[0],field[1],color="k",linewidth=lw)
+# lw = 5*speed / speed.max()
+# axes[1,0].streamplot(X,Y,field[0],field[1],color="k",linewidth=lw)
+axes[1,0].streamplot(X,Y, field[0],field[1],color="k" ,density=[0.5, 1])
+axes[1,0].scatter(1, 0, color="r")
+axes[1,0].scatter(-1, 0, color="b")
 axes[1,0].title.set_text("Electric Field")
 axes[1,0].set_xlabel("X")
 axes[1,0].set_ylabel("Y")
