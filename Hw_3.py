@@ -1,15 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from Electric_pot import Electric_pot
+from gradient import Grad
 plt.rcParams["font.family"] = "helvetica"
 plt.style.use('seaborn-white')
-
-
-def Electric_pot(q, x_1, y_1, x_2, y_2):
-    """Calculates the electric potential at point(s) (x_2, y_2)"""
-    ep_0 = 8.854 * 10 ** -12  # C^2/(N * m^2)
-    r = np.sqrt(((x_2 - x_1) ** 2) + ((y_2 - y_1) ** 2))
-    pot_denom = 4 * np.pi * ep_0 * r
-    return(q / pot_denom)
 
 
 # point charge 1 info
@@ -27,12 +21,11 @@ X, Y = np.meshgrid(x, y)
 
 # Calculating electric potential at all points
 
-potential = Electric_pot(1, -0.52, 0, X, Y) + Electric_pot(1, 0.52, 0, X, Y)
+potential = Electric_pot(-0.52, 0, X, Y, 1) + Electric_pot(.52, 0, X, Y, 1)
 
 # Calculating the E field at those points & and the speed for vector field
 
-field = np.gradient(potential)
-
+field = Grad(potential, 0.1)
 
 # Create figure
 
