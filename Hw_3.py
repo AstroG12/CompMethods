@@ -19,6 +19,11 @@ x = np.linspace(-1.0, 1.0, 201)
 y = np.linspace(-1.0, 1.0, 201)
 X, Y = np.meshgrid(x, y)
 
+# These points are used to just show the region 
+x_s = np.linspace(-1.0, 1.0, 11)
+y_s = np.linspace(-1.0, 1.0, 11)
+X_s, Y_s = np.meshgrid(x_s, y_s)
+
 # Calculating electric potential at all points
 
 potential = Electric_pot(-0.52, 0, X, Y, 1) + Electric_pot(.52, 0, X, Y, 1)
@@ -37,11 +42,13 @@ axes[1, 1].axis("off")
 
 # Plot the points made(gray) and particle (red and blue)
 
-axes[0, 0].scatter(X, Y, color="grey")
+
+# axes[0, 0].scatter(X, Y, color="grey")  # True points measured
+axes[0, 0].scatter(X_s, Y_s, color="grey")  # Points for a visual understanding
 axes[0, 0].grid()
 axes[0, 0].scatter(dist_1, 0, color="r")
 axes[0, 0].scatter(dist_2, 0, color="b")
-axes[0, 0].title.set_text("Points to Find Potentials")
+axes[0, 0].title.set_text("Region to Find Potentials(Charges are the red and blue points)")
 axes[0, 0].set_xlabel("X(m)")
 axes[0, 0].set_ylabel("Y(m)")
 
