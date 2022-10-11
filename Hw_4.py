@@ -6,7 +6,7 @@ from relaxation import relax
 
 # r = 384400.0e3 * 0.80
 r = 350000000
-h = 1e7
+h = 1e2
 sol = newton_method(lagrange_point, x=r, h=h)
 print(sol, lagrange_point(sol))
 print(" ")

@@ -8,6 +8,6 @@ def newton_method(func, x, h):
     x. I would recommend starting high-ish with guess until I decide
     to make it better....
     """
-    while np.abs(func(x)) > 1e-3:
+    while np.abs(func(x)) > 1e-2:
         x -= func(x) / der(func, x, h)
     return(x)
