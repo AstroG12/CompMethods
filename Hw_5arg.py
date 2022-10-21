@@ -7,24 +7,26 @@ from scipy.fft import dct, idct
 def fft10(file):
     f = np.loadtxt(file)
     coef = np.fft.fft(f)
-    plt.plot(f, "r")
+    plt.plot(f, "r", label="{}".format(file))
     for i in range(len(coef)):
         if i > len(coef) * 0.1:
             coef[i] = 0
     inv = np.fft.ifft(coef)
-    plt.plot(inv, "b")
+    plt.plot(inv, "b", label="10%")
+    plt.legend()
     plt.show()
 
 
 def fft2(file):
     f = np.loadtxt(file)
     coef = np.fft.fft(f)
-    plt.plot(f, "r")
+    plt.plot(f, "r", label="{}".format(file))
     for i in range(len(coef)):
         if i > len(coef) * 0.02:
             coef[i] = 0
     inv = np.fft.ifft(coef)
-    plt.plot(inv, "b")
+    plt.plot(inv, "b", label="2%")
+    plt.legend()
     plt.show()
 
 
@@ -32,7 +34,7 @@ def fft210(file):
     f = np.loadtxt(file)
     coef = np.fft.fft(f)
     b = np.copy(coef)
-    plt.plot(f, "r")
+    plt.plot(f, "r", label="{}".format(file))
     for i in range(len(coef)):
         if i > len(coef) * 0.02:
             coef[i] = 0
@@ -50,12 +52,13 @@ def fft210(file):
 def cos2(file):
     f = np.loadtxt(file)
     coef = dct(f)
-    plt.plot(f, "r")
+    plt.plot(f, "r", label="{}".format(file))
     for i in range(len(coef)):
         if i > len(coef) * 0.02:
             coef[i] = 0
     inv = idct(coef)
-    plt.plot(inv, "b")
+    plt.plot(inv, "b", label="2% with dct")
+    plt.legend()
     plt.show()
 
 
@@ -63,7 +66,7 @@ def cos2vfft2(file):
     f = np.loadtxt(file)
     coef_fft = np.fft.fft(f)
     coef_cos = dct(f)
-    plt.plot(f, "r")
+    plt.plot(f, "r", label="{}".format(file))
     for i in range(len(coef_cos)):
         if i > len(coef_cos) * 0.02:
             coef_cos[i] = 0
