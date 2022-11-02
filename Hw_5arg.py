@@ -85,10 +85,8 @@ func_map = {"fft10": fft10, "fft2": fft2,
             "fft210": fft210, "cos2": cos2, "cos2vfft2": cos2vfft2}
 
 parser = argparse.ArgumentParser()
-# parser.add_argument("file", type=argparse.FileType("r"), nargs="+")
 parser.add_argument("file", type=str)
 parser.add_argument("command", choices=func_map.keys())
-
 args = parser.parse_args()
 func = func_map[args.command]
 file = args.file
